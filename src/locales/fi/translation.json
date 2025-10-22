@@ -1,6 +1,4 @@
-{
-  "translation": {
-    "welcome": "Tervetuloa ilmoituskanavaan",
+{"welcome": "Tervetuloa ilmoituskanavaan",
     "report_case": "Ilmoita uusi tapaus",
     "report_instructions": "Täytä alla oleva lomake lähettääksesi ilmoituksen. Ilmoituksesi on anonyymi. Ole mahdollisimman yksityiskohtainen.",
     "title": "Otsikko",
@@ -25,4 +23,3 @@
     "actions": "Toiminnot",
     "export_pdf": "Vie PDF-muodossa"
   }
-}
