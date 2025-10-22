@@ -21,5 +21,21 @@
     "case_title": "Tapauksen otsikko",
     "created_at": "Luotu",
     "actions": "Toiminnot",
-    "export_pdf": "Vie PDF-muodossa"
+    "export_pdf": "Vie PDF-muodossa",
+    "admin_login": "Järjestelmänvalvojan kirjautuminen",
+    "username": "Käyttäjätunnus",
+    "password": "Salasana",
+    "login": "Kirjaudu sisään",
+    "acknowledge_deadline": "Määräaika vahvistamiselle",
+    "respond_deadline": "Määräaika vastaamiselle",
+    "close_case": "Sulje tapaus",
+    "timeline": "Aikajana",
+    "acknowledged_at": "Vahvistettu",
+    "responded_at": "Vastattu",
+    "is_acknowledgement": "Tämä on virallinen vastaanottokuittaus.",
+    "is_response": "Tämä on virallinen vastaus.",
+    "compliance_report": "Vaatimustenmukaisuusraportti",
+    "last_year_report": "Viime vuoden raportti",
+    "ack_deadline_met": "Vahv. määräaika täytetty",
+    "res_deadline_met": "Vast. määräaika täytetty"
   }

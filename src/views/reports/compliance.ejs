@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('compliance_report') %></title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1><%= t('compliance_report') %></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th><%= t('case_title') %></th>
+                <th><%= t('created_at') %></th>
+                <th><%= t('acknowledge_deadline') %></th>
+                <th><%= t('acknowledged_at') %></th>
+                <th><%= t('ack_deadline_met') %></th>
+                <th><%= t('respond_deadline') %></th>
+                <th><%= t('responded_at') %></th>
+                <th><%= t('res_deadline_met') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% reports.forEach(report => { %>
+                <tr>
+                    <td><%= report.title %></td>
+                    <td><%= new Date(report.created_at).toLocaleString() %></td>
+                    <td><%= report.ack_deadline.toLocaleString() %></td>
+                    <td><%= report.acknowledged_at ? new Date(report.acknowledged_at).toLocaleString() : 'N/A' %></td>
+                    <td><%= report.ack_met === null ? 'N/A' : (report.ack_met ? 'Yes' : 'No') %></td>
+                    <td><%= report.res_deadline.toLocaleString() %></td>
+                    <td><%= report.responded_at ? new Date(report.responded_at).toLocaleString() : 'N/A' %></td>
+                    <td><%= report.res_met === null ? 'N/A' : (report.res_met ? 'Yes' : 'No') %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

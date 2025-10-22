@@ -21,5 +21,21 @@
     "case_title": "Case Title",
     "created_at": "Created At",
     "actions": "Actions",
-    "export_pdf": "Export as PDF"
+    "export_pdf": "Export as PDF",
+    "admin_login": "Admin Login",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "acknowledge_deadline": "Acknowledge Deadline",
+    "respond_deadline": "Respond Deadline",
+    "close_case": "Close Case",
+    "timeline": "Timeline",
+    "acknowledged_at": "Acknowledged At",
+    "responded_at": "Responded At",
+    "is_acknowledgement": "This is the official acknowledgement of receipt.",
+    "is_response": "This is the official response.",
+    "compliance_report": "Compliance Report",
+    "last_year_report": "Last Year's Report",
+    "ack_deadline_met": "Ack. Deadline Met",
+    "res_deadline_met": "Res. Deadline Met"
   }

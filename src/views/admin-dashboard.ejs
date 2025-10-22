@@ -4,37 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= t('admin_dashboard') %></title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1><%= t('admin_dashboard') %></h1>
+    <div class="container">
+        <div class="lang-switcher">
+            <a href="?lng=en">English</a> | <a href="?lng=sv">Svenska</a> | <a href="?lng=fi">Suomi</a>
+        </div>
+        <h1><%= t('admin_dashboard') %></h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th><%= t('case_title') %></th>
-                <th><%= t('status') %></th>
-                <th><%= t('created_at') %></th>
-                <th><%= t('actions') %></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% reports.forEach(report => { %>
+        <div class="reports">
+            <a href="/admin/reports/compliance" class="btn"><%= t('compliance_report') %></a>
+            <a href="/admin/reports/last-year" class="btn"><%= t('last_year_report') %></a>
+        </div>
+
+        <table>
+            <thead>
                 <tr>
-                    <td><%= report.title %></td>
-                    <td><%= report.status %></td>
-                    <td><%= new Date(report.created_at).toLocaleString() %></td>
-                    <td>
-                        <a href="/case?code=<%= report.handler_code %>"><%= t('view_case') %></a> |
-                        <a href="/admin/export/<%= report.id %>"><%= t('export_pdf') %></a>
-                    </td>
+                    <th><%= t('case_title') %></th>
+                    <th><%= t('status') %></th>
+                    <th><%= t('created_at') %></th>
+                    <th><%= t('acknowledge_deadline') %></th>
+                    <th><%= t('respond_deadline') %></th>
+                    <th><%= t('actions') %></th>
                 </tr>
-            <% }) %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% reports.forEach(report => { %>
+                    <%
+                        const createdAt = new Date(report.created_at);
+                        const ackDeadline = new Date(createdAt);
+                        ackDeadline.setDate(createdAt.getDate() + 7);
+                        const resDeadline = new Date(createdAt);
+                        resDeadline.setMonth(createdAt.getMonth() + 3);
+                    %>
+                    <tr>
+                        <td><%= report.title %></td>
+                        <td><%= report.status %></td>
+                        <td><%= createdAt.toLocaleString() %></td>
+                        <td style="<%= !report.acknowledged_at && new Date() > ackDeadline ? 'color:red;' : '' %>">
+                            <%= ackDeadline.toLocaleString() %>
+                        </td>
+                        <td style="<%= !report.responded_at && new Date() > resDeadline ? 'color:red;' : '' %>">
+                            <%= resDeadline.toLocaleString() %>
+                        </td>
+                        <td>
+                            <a href="/case?code=<%= report.handler_code %>"><%= t('view_case') %></a> |
+                            <a href="/admin/export/<%= report.id %>"><%= t('export_pdf') %></a>
+                            <% if (report.status !== 'closed') { %>
+                                | <a href="/admin/case/close/<%= report.id %>"><%= t('close_case') %></a>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

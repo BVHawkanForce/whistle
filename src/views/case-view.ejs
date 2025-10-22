@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= t('case_details') %> - <%= report.title %></title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
-        .case-container { max-width: 800px; margin: auto; }
-        .chat-box { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; margin-bottom: 20px; }
-        .message { margin-bottom: 10px; }
-        .reporter { text-align: left; }
-        .handler { text-align: right; }
-        .message p { background: #f1f1f1; padding: 10px; border-radius: 5px; display: inline-block; }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="case-container">
+    <div class="container">
+        <div class="lang-switcher">
+            <a href="?lng=en">English</a> | <a href="?lng=sv">Svenska</a> | <a href="?lng=fi">Suomi</a>
+        </div>
         <h1><%= t('case') %>: <%= report.title %></h1>
         <p><strong><%= t('status') %>:</strong> <%= report.status %></p>
         <p><strong><%= t('description') %>:</strong> <%= report.description %></p>
+
+        <div class="timeline">
+            <h3><%= t('timeline') %></h3>
+            <% const createdAt = new Date(report.created_at); %>
+            <% const ackDeadline = new Date(createdAt); ackDeadline.setDate(createdAt.getDate() + 7); %>
+            <% const resDeadline = new Date(createdAt); resDeadline.setMonth(createdAt.getMonth() + 3); %>
+            <p><strong><%= t('acknowledge_deadline') %>:</strong> <%= ackDeadline.toLocaleString() %></p>
+            <% if (report.acknowledged_at) { %>
+                <p><strong><%= t('acknowledged_at') %>:</strong> <%= new Date(report.acknowledged_at).toLocaleString() %></p>
+            <% } %>
+            <p><strong><%= t('respond_deadline') %>:</strong> <%= resDeadline.toLocaleString() %></p>
+            <% if (report.responded_at) { %>
+                <p><strong><%= t('responded_at') %>:</strong> <%= new Date(report.responded_at).toLocaleString() %></p>
+            <% } %>
+        </div>
 
         <hr>
 
@@ -31,10 +41,19 @@
             <% }) %>
         </div>
 
-        <form action="/case/<%= report.id %>/messages" method="POST">
+        <form action="/case/<%= report.id %>/messages" method="POST" class="form-group">
             <input type="hidden" name="userType" value="<%= userType %>">
-            <textarea name="message" rows="5" placeholder="<%= t('type_your_message') %>" style="width: 100%;"></textarea>
-            <button type="submit"><%= t('send_message') %></button>
+            <textarea name="message" rows="5" placeholder="<%= t('type_your_message') %>"></textarea>
+            <br>
+            <% if (userType === 'handler') { %>
+                <input type="checkbox" name="is_acknowledgement" id="is_acknowledgement">
+                <label for="is_acknowledgement"><%= t('is_acknowledgement') %></label>
+                <br>
+                <input type="checkbox" name="is_response" id="is_response">
+                <label for="is_response"><%= t('is_response') %></label>
+                <br>
+            <% } %>
+            <button type="submit" class="btn"><%= t('send_message') %></button>
         </form>
     </div>
 </body>

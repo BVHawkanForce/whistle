@@ -55,7 +55,7 @@ exports.getCase = async (req, res) => {
 // Post a new message
 exports.postMessage = async (req, res) => {
   const { id } = req.params;
-  const { message, userType } = req.body;
+  const { message, userType, is_acknowledgement, is_response } = req.body;
 
   if (!message) {
     return res.status(400).send('Message content is required.');
@@ -65,13 +65,33 @@ exports.postMessage = async (req, res) => {
     const encryptedMessage = encrypt(message);
     const sender = userType === 'handler' ? 'handler' : 'reporter';
 
-    const query = `
-      INSERT INTO messages (report_id, sender, message)
-      VALUES ($1, $2, $3)
-    `;
-    const values = [id, sender, encryptedMessage];
+    const client = await db.getClient();
+    try {
+      await client.query('BEGIN');
 
-    await db.query(query, values);
+      const messageQuery = `
+        INSERT INTO messages (report_id, sender, message)
+        VALUES ($1, $2, $3)
+      `;
+      const messageValues = [id, sender, encryptedMessage];
+      await client.query(messageQuery, messageValues);
+
+      if (userType === 'handler') {
+        if (is_acknowledgement) {
+          await client.query('UPDATE reports SET acknowledged_at = NOW(), status = \'acknowledged\' WHERE id = $1', [id]);
+        }
+        if (is_response) {
+          await client.query('UPDATE reports SET responded_at = NOW(), status = \'responded\' WHERE id = $1', [id]);
+        }
+      }
+
+      await client.query('COMMIT');
+    } catch (e) {
+      await client.query('ROLLBACK');
+      throw e;
+    } finally {
+      client.release();
+    }
 
     res.redirect('back');
   } catch (error) {

@@ -16,7 +16,10 @@ CREATE TABLE reports (
     description TEXT NOT NULL,
     status VARCHAR(20) DEFAULT 'new',
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    acknowledged_at TIMESTAMPTZ,
+    responded_at TIMESTAMPTZ,
+    closed_at TIMESTAMPTZ
 );
 
 -- Create a trigger to automatically update the updated_at field for reports

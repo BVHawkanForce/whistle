@@ -21,5 +21,21 @@
     "case_title": "Ärendetitel",
     "created_at": "Skapad",
     "actions": "Åtgärder",
-    "export_pdf": "Exportera som PDF"
+    "export_pdf": "Exportera som PDF",
+    "admin_login": "Admininloggning",
+    "username": "Användarnamn",
+    "password": "Lösenord",
+    "login": "Logga in",
+    "acknowledge_deadline": "Tidsfrist för bekräftelse",
+    "respond_deadline": "Tidsfrist för svar",
+    "close_case": "Stäng ärende",
+    "timeline": "Tidslinje",
+    "acknowledged_at": "Bekräftad den",
+    "responded_at": "Besvarad den",
+    "is_acknowledgement": "Detta är den officiella mottagningsbekräftelsen.",
+    "is_response": "Detta är det officiella svaret.",
+    "compliance_report": "Efterlevnadsrapport",
+    "last_year_report": "Rapport för förra året",
+    "ack_deadline_met": "Bekr. tidsfrist uppfylld",
+    "res_deadline_met": "Svars tidsfrist uppfylld"
   }

@@ -23,11 +23,23 @@ describe('App Routes', () => {
     expect(res.statusCode).toEqual(200);
   });
 
-  it('should respond with 200 for the admin dashboard route', async () => {
+  it('should redirect to login for the admin dashboard route when not authenticated', async () => {
+    const res = await request(app).get('/admin/dashboard');
+    expect(res.statusCode).toEqual(302);
+    expect(res.headers.location).toBe('/admin/login');
+  });
+
+  it('should respond with 200 for the admin dashboard route when authenticated', async () => {
     const db = require('../src/config/database');
+    const agent = request.agent(app);
+
+    await agent
+      .post('/admin/login')
+      .send({ username: 'admin', password: 'password' });
+
     // Mock the specific query for fetching reports for the dashboard
     db.query.mockResolvedValue({ rows: [{id: 1, title: 'U5VYT09PVEVSUExBTg==', status: 'new', created_at: '2023-01-01'}] });
-    const res = await request(app).get('/admin/dashboard');
+    const res = await agent.get('/admin/dashboard');
     expect(res.statusCode).toEqual(200);
   });
 });

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const i18next = require('i18next');
 const i18nextMiddleware = require('i18next-http-middleware');
@@ -37,6 +38,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, '../public')));
+
+const session = require('express-session');
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'a-very-secret-key-that-you-should-change',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === 'production' }
+}));
 
 
 // Routes

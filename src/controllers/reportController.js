@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const db = require('../config/database');
 const { encrypt } = require('../utils/encryption');
+const { sendNotification } = require('../utils/emailService');
 
 const generateSecureCode = () => {
   return crypto.randomBytes(16).toString('hex');
@@ -29,6 +30,13 @@ exports.submitReport = async (req, res) => {
 
     const result = await db.query(query, values);
     const reportId = result.rows[0].id;
+
+    // Send email notification
+    const subject = `New Whistleblowing Report Submitted: ${title}`;
+    const text = `A new whistleblowing report has been submitted.\n\nTitle: ${title}\n\nDescription: ${description}\n\nView the case in the admin dashboard.`;
+    const html = `<p>A new whistleblowing report has been submitted.</p><p><b>Title:</b> ${title}</p><p><b>Description:</b> ${description}</p><p>View the case in the admin dashboard.</p>`;
+    sendNotification(subject, text, html);
+
 
     // Redirect to a success page displaying the code
     res.redirect(`/report/success?code=${reporterCode}`);
