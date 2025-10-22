@@ -13,6 +13,11 @@ i18next
   .use(i18nextFsBackend)
   .use(i18nextMiddleware.LanguageDetector)
   .init({
+    detection: {
+      order: ['querystring','cookie','header'],
+      lookupQuerystring: 'lng',
+      caches: false
+    },
     backend: {
       loadPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.json'),
       addPath: path.join(__dirname, 'locales/{{lng}}/{{ns}}.missing.json')
@@ -25,8 +30,9 @@ i18next
 const helmet = require('helmet');
 
 // Middleware
-app.use(helmet());
+app.use(helmet({ hsts: false, contentSecurityPolicy: false }));
 app.use(i18nextMiddleware.handle(i18next));
+app.use((req,res,next)=>{ res.locals.t=req.t; res.locals.i18n=req.i18n; next(); });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
