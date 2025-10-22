@@ -1,6 +1,4 @@
-{
-  "translation": {
-    "welcome": "Välkommen till visselblåsarkanalen",
+{"welcome": "Välkommen till visselblåsarkanalen",
     "report_case": "Anmäl ett nytt ärende",
     "report_instructions": "Fyll i formuläret nedan för att skicka in en anmälan. Din anmälan är anonym. Var så detaljerad som möjligt.",
     "title": "Titel",
@@ -25,4 +23,3 @@
     "actions": "Åtgärder",
     "export_pdf": "Exportera som PDF"
   }
-}
