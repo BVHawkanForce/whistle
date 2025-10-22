@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= t('report_case') %></title>
+  <style>
+    body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+    .lang-switcher { margin-bottom: 20px; }
+    form { max-width: 600px; }
+    label { display: block; margin-bottom: 5px; }
+    input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+    button { padding: 10px 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="lang-switcher">
+    <a href="?lng=en">English</a> | <a href="?lng=sv">Svenska</a> | <a href="?lng=fi">Suomi</a>
+  </div>
+
+  <h1><%= t('report_case') %></h1>
+  <p><%= t('report_instructions') %></p>
+
+  <form action="/report" method="POST">
+    <div>
+      <label for="title"><%= t('title') %></label>
+      <input type="text" id="title" name="title" required>
+    </div>
+    <div>
+      <label for="description"><%= t('description') %></label>
+      <textarea id="description" name="description" rows="10" required></textarea>
+    </div>
+    <button type="submit"><%= t('submit_report') %></button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "report_case": "report_case",
+  "report_instructions": "report_instructions",
+  "title": "title",
+  "description": "description",
+  "submit_report": "submit_report",
+  "access_case": "access_case",
+  "enter_your_code": "enter_your_code",
+  "view_case": "view_case",
+  "admin_dashboard": "admin_dashboard",
+  "case_title": "case_title",
+  "status": "status",
+  "created_at": "created_at",
+  "actions": "actions",
+  "export_pdf": "export_pdf",
+  "report_submitted_successfully": "report_submitted_successfully",
+  "save_your_code": "save_your_code",
+  "your_case_code": "your_case_code",
+  "code_warning": "code_warning"
+}

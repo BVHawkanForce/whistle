@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('report_submitted_successfully') %></title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; text-align: center; }
+        .code-container { border: 2px dashed #ccc; padding: 20px; margin: 20px auto; max-width: 500px; }
+        .important-text { color: #d9534f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1><%= t('report_submitted_successfully') %></h1>
+    <p><%= t('save_your_code') %></p>
+
+    <div class="code-container">
+        <p><%= t('your_case_code') %></p>
+        <p><strong><%= code %></strong></p>
+    </div>
+
+    <p class="important-text"><%= t('code_warning') %></p>
+
+</body>
+</html>

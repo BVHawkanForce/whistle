@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "welcome": "Välkommen till visselblåsarkanalen",
+    "report_case": "Anmäl ett nytt ärende",
+    "report_instructions": "Fyll i formuläret nedan för att skicka in en anmälan. Din anmälan är anonym. Var så detaljerad som möjligt.",
+    "title": "Titel",
+    "description": "Beskrivning",
+    "submit_report": "Skicka in anmälan",
+    "report_submitted_successfully": "Anmälan inskickad",
+    "save_your_code": "Vänligen spara följande kod. Det är det enda sättet att komma åt ditt ärende och kommunicera med handläggarna.",
+    "your_case_code": "Ditt ärendekod är:",
+    "code_warning": "Varning: Denna kod kommer inte att visas igen. Vänligen förvara den på en säker plats.",
+    "access_case": "Gå till ditt ärende",
+    "enter_your_code": "Ange din ärendekod:",
+    "view_case": "Visa ärende",
+    "case_details": "Ärendedetaljer",
+    "case": "Ärende",
+    "status": "Status",
+    "communication_channel": "Kommunikationskanal",
+    "type_your_message": "Skriv ditt meddelande här...",
+    "send_message": "Skicka meddelande",
+    "admin_dashboard": "Adminpanel",
+    "case_title": "Ärendetitel",
+    "created_at": "Skapad",
+    "actions": "Åtgärder",
+    "export_pdf": "Exportera som PDF"
+  }
+}

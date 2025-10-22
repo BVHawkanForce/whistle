@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('case_details') %> - <%= report.title %></title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        .case-container { max-width: 800px; margin: auto; }
+        .chat-box { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; margin-bottom: 20px; }
+        .message { margin-bottom: 10px; }
+        .reporter { text-align: left; }
+        .handler { text-align: right; }
+        .message p { background: #f1f1f1; padding: 10px; border-radius: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="case-container">
+        <h1><%= t('case') %>: <%= report.title %></h1>
+        <p><strong><%= t('status') %>:</strong> <%= report.status %></p>
+        <p><strong><%= t('description') %>:</strong> <%= report.description %></p>
+
+        <hr>
+
+        <h2><%= t('communication_channel') %></h2>
+        <div class="chat-box">
+            <% messages.forEach(message => { %>
+                <div class="message <%= message.sender %>">
+                    <p><strong><%= message.sender %>:</strong> <%= message.message %></p>
+                </div>
+            <% }) %>
+        </div>
+
+        <form action="/case/<%= report.id %>/messages" method="POST">
+            <input type="hidden" name="userType" value="<%= userType %>">
+            <textarea name="message" rows="5" placeholder="<%= t('type_your_message') %>" style="width: 100%;"></textarea>
+            <button type="submit"><%= t('send_message') %></button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('access_case') %></title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        .lang-switcher { margin-bottom: 20px; }
+        .login-container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="lang-switcher">
+        <a href="?lng=en">English</a> | <a href="?lng=sv">Svenska</a> | <a href="?lng=fi">Suomi</a>
+    </div>
+
+    <div class="login-container">
+        <h2><%= t('access_case') %></h2>
+        <form action="/case" method="GET">
+            <label for="code"><%= t('enter_your_code') %></label>
+            <input type="text" id="code" name="code" required>
+            <button type="submit"><%= t('view_case') %></button>
+        </form>
+    </div>
+</body>
+</html>

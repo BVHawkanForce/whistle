@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="<%= i18n.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= t('admin_dashboard') %></title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1><%= t('admin_dashboard') %></h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th><%= t('case_title') %></th>
+                <th><%= t('status') %></th>
+                <th><%= t('created_at') %></th>
+                <th><%= t('actions') %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% reports.forEach(report => { %>
+                <tr>
+                    <td><%= report.title %></td>
+                    <td><%= report.status %></td>
+                    <td><%= new Date(report.created_at).toLocaleString() %></td>
+                    <td>
+                        <a href="/case?code=<%= report.handler_code %>"><%= t('view_case') %></a> |
+                        <a href="/admin/export/<%= report.id %>"><%= t('export_pdf') %></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

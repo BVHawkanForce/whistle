@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "welcome": "Welcome to the Whistleblowing Channel",
+    "report_case": "Report a New Case",
+    "report_instructions": "Fill out the form below to submit a report. Your submission is anonymous. Please be as detailed as possible.",
+    "title": "Title",
+    "description": "Description",
+    "submit_report": "Submit Report",
+    "report_submitted_successfully": "Report Submitted Successfully",
+    "save_your_code": "Please save the following code. It is the only way to access your case and communicate with the case handlers.",
+    "your_case_code": "Your case code is:",
+    "code_warning": "Warning: This code will not be shown again. Please store it in a safe place.",
+    "access_case": "Access Your Case",
+    "enter_your_code": "Enter your case code:",
+    "view_case": "View Case",
+    "case_details": "Case Details",
+    "case": "Case",
+    "status": "Status",
+    "communication_channel": "Communication Channel",
+    "type_your_message": "Type your message here...",
+    "send_message": "Send Message",
+    "admin_dashboard": "Admin Dashboard",
+    "case_title": "Case Title",
+    "created_at": "Created At",
+    "actions": "Actions",
+    "export_pdf": "Export as PDF"
+  }
+}

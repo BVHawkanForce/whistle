@@ -1,0 +1,28 @@
+{
+  "translation": {
+    "welcome": "Tervetuloa ilmoituskanavaan",
+    "report_case": "Ilmoita uusi tapaus",
+    "report_instructions": "Täytä alla oleva lomake lähettääksesi ilmoituksen. Ilmoituksesi on anonyymi. Ole mahdollisimman yksityiskohtainen.",
+    "title": "Otsikko",
+    "description": "Kuvaus",
+    "submit_report": "Lähetä ilmoitus",
+    "report_submitted_successfully": "Ilmoitus lähetetty onnistuneesti",
+    "save_your_code": "Tallenna seuraava koodi. Se on ainoa tapa päästä tapaukseesi ja kommunikoida käsittelijöiden kanssa.",
+    "your_case_code": "Tapauskoodisi on:",
+    "code_warning": "Varoitus: Tätä koodia ei näytetä uudelleen. Säilytä se turvallisessa paikassa.",
+    "access_case": "Siirry tapaukseesi",
+    "enter_your_code": "Anna tapauskoodisi:",
+    "view_case": "Näytä tapaus",
+    "case_details": "Tapauksen tiedot",
+    "case": "Tapaus",
+    "status": "Tila",
+    "communication_channel": "Viestintäkanava",
+    "type_your_message": "Kirjoita viestisi tähän...",
+    "send_message": "Lähetä viesti",
+    "admin_dashboard": "Hallintapaneeli",
+    "case_title": "Tapauksen otsikko",
+    "created_at": "Luotu",
+    "actions": "Toiminnot",
+    "export_pdf": "Vie PDF-muodossa"
+  }
+}
