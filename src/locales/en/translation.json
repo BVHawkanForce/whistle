@@ -1,6 +1,4 @@
-{
-  "translation": {
-    "welcome": "Welcome to the Whistleblowing Channel",
+{"welcome": "Welcome to the Whistleblowing Channel",
     "report_case": "Report a New Case",
     "report_instructions": "Fill out the form below to submit a report. Your submission is anonymous. Please be as detailed as possible.",
     "title": "Title",
@@ -25,4 +23,3 @@
     "actions": "Actions",
     "export_pdf": "Export as PDF"
   }
-}
