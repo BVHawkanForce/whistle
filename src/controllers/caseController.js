@@ -1,6 +1,7 @@
 const db = require('../config/database');
 const { decrypt } = require('../utils/encryption');
 const { encrypt } = require('../utils/encryption');
+const { sendMail } = require('../utils/email');
 
 // Display a case
 exports.getCase = async (req, res) => {
@@ -91,6 +92,14 @@ exports.postMessage = async (req, res) => {
       throw e;
     } finally {
       client.release();
+    }
+
+    // 📧 Skicka e-post endast om visselblåsaren skrev
+    if (sender === 'reporter') {
+      await sendMail(
+        'Nytt meddelande från visselblåsare',
+        `Ett nytt meddelande har inkommit i ett ärende.\n\nÄrende-ID: ${id}`
+      );
     }
 
     res.redirect('back');
